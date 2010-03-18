@@ -1,3 +1,7 @@
+=== 1.0.5 / 2010-03-18
+  * Fixed issue (user error) on gem build that was not including the gem into rails apps correctly
+=== 1.0.0 - 1.0.4 / 2010-03-18
+  * Issues with rubygems/gemcutter and gemspec (if you installed any of these versions, please upgrade to get the module to include properly)
 === 1.0.0 / 2010-03-18
   * Added treetop PEG to handle search terms with and, or, grouping, and quoting
   * forked from http://github.com/tenderlove/texticle
