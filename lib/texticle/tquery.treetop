@@ -1,0 +1,66 @@
+grammar TQuery
+  rule query
+    space expression more_query? space <QueryNode>
+  end
+  
+  rule more_query
+    space query space <QueryNode>
+  end
+  
+  rule expression
+     term+ space more:more_expression? <ExpressionNode>
+  end
+  
+  rule more_expression
+    space expression <ExpressionNode>
+  end
+  
+  rule grouped_term
+    '(' term+ ')' <GroupedTermNode>
+  end
+  
+  # TODO support single or double quotes
+  rule quoted_term
+    '"' quoted_stuff:[^\"]* '"' <QuotedTermNode>
+  end
+  
+  rule term
+    space (boolean_term / quoted_term / word / grouped_term) space <TermNode>
+  end
+  
+  rule word
+    word_char+ <WordNode>
+  end
+  
+  rule word_char
+    letter / digit / '_' / '&' / '.' / '!'
+  end
+  
+  rule letter
+    [A-Za-z]
+  end
+
+  rule digit
+    [0-9]
+  end
+  
+  rule space
+    [\s]*
+  end
+  
+  rule boolean_term
+    and_term / or_term
+  end
+  
+  rule and_term
+    ('and' / '&&') term <AndTermNode>
+  end
+  
+  rule or_term
+    ('or' / '||') term <OrTermNode>
+  end
+  
+  #rule not_term
+  # '!' term <NotTermNode>
+  #end
+end
