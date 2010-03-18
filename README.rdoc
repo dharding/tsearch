@@ -57,8 +57,7 @@ The migration method is recommended as you can then use it to build additional d
 
 (The MIT License)
 
-Copyright (c) 2010 David J Harding
-Copyright (c) 2009 Aaron Patterson
+Copyright (c) 2010 David J Harding (based on work Copyright (c) 2009 Aaron Patterson)
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
