@@ -1,24 +1,32 @@
-= texticle
+= tsearch
 
-* http://texticle.rubyforge.org/
+* http://github.com/dharding/tsearch
 
 == DESCRIPTION:
 
-Texticle exposes full text search capabilities from PostgreSQL, and allows
-you to declare full text indexes.  Texticle will extend ActiveRecord with
-named_scope methods making searching easy and fun!
+tsearch exposes PostgreSQL's full text search capabilities via named scopes on your ActiveRecord models.
 
-== FEATURES/PROBLEMS:
+Originally based on: http://github.com/tenderlove/texticle
 
-* Only works with PostgreSQL
+== FEATURES:
 
-== SYNOPSIS:
+* Supports quoted, grouped, and boolean search strings
 
-In environment.rb:
+== ISSUES:
 
-  config.gem 'texticle'
+* Allows multiple indexes to be defined, but always defaults to the first one defined when search is called (Working on this)
 
-Declare your index in your model:
+== INSTALLATION:
+
+Install the gem
+  
+  sudo gem install tsearch
+
+Add gem to your environment.rb:
+
+  config.gem 'tsearch', :lib => 'texticle', :source => 'http://gemcutter.org'
+
+Declare an index in your model:
 
   class Product < ActiveRecord::Base
     index do
@@ -31,32 +39,25 @@ Use the search method
 
   Product.search('hello world')
 
-Full text searches can be sped up by creating indexes.  To create the
-indexes, add these lines to your Rakefile:
-
-  require 'rubygems'
-  require 'texticle/tasks'
-
-Then run:
+Full text searches can be sped up by creating indexes.
 
   $ rake texticle:create_indexes
 
 Alternatively, you can create a migration that will build your indexes:
 
   $ rake texticle:migration
+  
+The migration method is recommended as you can then use it to build additional databases for testing, staging, etc.
 
 == REQUIREMENTS:
 
-* Texticle may be used outside rails, but works best with rails.
-
-== INSTALL:
-
-* sudo gem install texticle
+* PostgreSQL 8.3 and up
 
 == LICENSE:
 
 (The MIT License)
 
+Copyright (c) 2010 David J Harding
 Copyright (c) 2009 Aaron Patterson
 
 Permission is hereby granted, free of charge, to any person obtaining

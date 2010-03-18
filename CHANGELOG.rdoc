@@ -1,20 +1,3 @@
-=== 1.0.2 / 2009-10-17
-
-* 1 bugfix
-
-  * Generated migration now uses UTC time rather than local time.
-
-=== 1.0.1 / 2009-04-14
-
-* 1 minor enhancement
-
-  * Textical adds a rake task to generate FTS index migrations.  Just run:
-
-      rake textical:migration
-
-=== 1.0.0 / 2009-04-14
-
-* 1 major enhancement
-
-  * Birthday!
-
+=== 1.0.0 / 2010-03-18
+  * Added treetop PEG to handle search terms with and, or, grouping, and quoting
+  * forked from http://github.com/tenderlove/texticle
